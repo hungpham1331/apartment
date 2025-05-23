@@ -1,0 +1,1156 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DHHOUSE Đà Nẵng - Thuê căn hộ cao cấp</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#D4AF37',
+                        darkgold: '#B8860B',
+                        cream: '#FFFDD0',
+                        navy: '#000080',
+                        charcoal: '#36454F'
+                    },
+                    fontFamily: {
+                        'sans': ['Montserrat', 'sans-serif'],
+                        'serif': ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f8f8f8;
+        }
+        
+        .hero-section {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600' viewBox='0 0 1200 600'%3E%3Crect width='1200' height='600' fill='%23365B6D'/%3E%3Cpath d='M0,400 C300,450 500,350 600,300 C700,250 900,350 1200,400 L1200,600 L0,600 Z' fill='%23264653'/%3E%3Cpath d='M0,450 C300,500 500,400 600,350 C700,300 900,400 1200,450 L1200,600 L0,600 Z' fill='%232A9D8F'/%3E%3Cpath d='M0,500 C300,550 500,450 600,400 C700,350 900,450 1200,500 L1200,600 L0,600 Z' fill='%23E9C46A'/%3E%3Cpath d='M0,550 C300,580 500,520 600,500 C700,480 900,520 1200,550 L1200,600 L0,600 Z' fill='%23F4A261'/%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .apartment-card {
+            transition: all 0.3s ease;
+        }
+        
+        .apartment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .price-tag {
+            background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 3px;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #B8860B;
+        }
+        
+        .search-input:focus {
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.3);
+        }
+        
+        .filter-active {
+            background-color: #D4AF37;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-white shadow-md fixed w-full z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="text-2xl font-serif font-bold text-charcoal">
+                    <span class="text-gold">DHHOUSE</span>
+                </div>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#" class="text-charcoal hover:text-gold transition duration-300 font-medium">Trang chủ</a>
+                <a href="#apartments" class="text-charcoal hover:text-gold transition duration-300 font-medium">Căn hộ</a>
+                <a href="#" class="text-charcoal hover:text-gold transition duration-300 font-medium">Dịch vụ</a>
+                <a href="#" class="text-charcoal hover:text-gold transition duration-300 font-medium">Về chúng tôi</a>
+                <a href="#" class="text-charcoal hover:text-gold transition duration-300 font-medium">Liên hệ</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <button class="hidden md:block bg-gold hover:bg-darkgold text-white px-4 py-2 rounded-md transition duration-300 font-medium">
+                    Đăng nhập
+                </button>
+                <button class="md:hidden text-charcoal" id="mobile-menu-button">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white w-full py-4 px-6 shadow-lg">
+            <div class="flex flex-col space-y-4">
+                <a href="#" class="text-charcoal hover:text-gold transition duration-300 font-medium">Trang chủ</a>
+                <a href="#apartments" class="text-charcoal hover:text-gold transition duration-300 font-medium">Căn hộ</a>
+                <a href="#" class="text-charcoal hover:text-gold transition duration-300 font-medium">Dịch vụ</a>
+                <a href="#" class="text-charcoal hover:text-gold transition duration-300 font-medium">Về chúng tôi</a>
+                <a href="#" class="text-charcoal hover:text-gold transition duration-300 font-medium">Liên hệ</a>
+                <button class="bg-gold hover:bg-darkgold text-white px-4 py-2 rounded-md transition duration-300 font-medium w-full">
+                    Đăng nhập
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section h-screen flex items-center justify-center pt-16">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-6xl font-serif font-bold text-white mb-6">
+                Khám Phá Căn Hộ Cao Cấp Tại Đà Nẵng
+            </h1>
+            <p class="text-xl md:text-2xl text-white mb-10 max-w-3xl mx-auto">
+                Trải nghiệm cuộc sống đẳng cấp với tầm nhìn tuyệt đẹp ra biển và thành phố
+            </p>
+            
+            <!-- Search Box -->
+            <div class="bg-white p-6 rounded-lg shadow-lg max-w-4xl mx-auto">
+                <div class="flex flex-col md:flex-row gap-4">
+                    <div class="flex-1">
+                        <label class="block text-sm font-medium text-gray-700 text-left mb-1">Địa điểm</label>
+                        <div class="relative">
+                            <input type="text" placeholder="Đà Nẵng" class="search-input w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none" value="Đà Nẵng" readonly>
+                            <i class="fas fa-map-marker-alt absolute right-3 top-3 text-gold"></i>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <label class="block text-sm font-medium text-gray-700 text-left mb-1">Ngày nhận phòng</label>
+                        <div class="relative">
+                            <input type="date" class="search-input w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none">
+                            <i class="far fa-calendar absolute right-3 top-3 text-gold"></i>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <label class="block text-sm font-medium text-gray-700 text-left mb-1">Ngày trả phòng</label>
+                        <div class="relative">
+                            <input type="date" class="search-input w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none">
+                            <i class="far fa-calendar absolute right-3 top-3 text-gold"></i>
+                        </div>
+                    </div>
+                    <div class="flex-1 flex items-end">
+                        <button class="w-full bg-gold hover:bg-darkgold text-white px-6 py-3 rounded-md transition duration-300 font-medium">
+                            <i class="fas fa-search mr-2"></i> Tìm kiếm
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="py-12 bg-white" id="apartments">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-serif font-bold text-center mb-12">Căn Hộ Cao Cấp Tại Đà Nẵng</h2>
+            
+            <div class="bg-gray-50 p-6 rounded-lg shadow-sm mb-8">
+                <div class="flex flex-col md:flex-row gap-6 justify-between">
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Khoảng giá</label>
+                            <select id="price-filter" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gold">
+                                <option value="all">Tất cả giá</option>
+                                <option value="0-5">Dưới 5 triệu/tháng</option>
+                                <option value="5-10">5 - 10 triệu/tháng</option>
+                                <option value="10-15">10 - 15 triệu/tháng</option>
+                                <option value="15-20">15 - 20 triệu/tháng</option>
+                                <option value="20+">Trên 20 triệu/tháng</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Số phòng ngủ</label>
+                            <select id="bedroom-filter" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gold">
+                                <option value="all">Tất cả</option>
+                                <option value="1">1 phòng ngủ</option>
+                                <option value="2">2 phòng ngủ</option>
+                                <option value="3">3 phòng ngủ</option>
+                                <option value="4+">4+ phòng ngủ</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Khu vực</label>
+                            <select id="area-filter" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gold">
+                                <option value="all">Tất cả khu vực</option>
+                                <option value="son-tra">Sơn Trà</option>
+                                <option value="hai-chau">Hải Châu</option>
+                                <option value="ngu-hanh-son">Ngũ Hành Sơn</option>
+                                <option value="thanh-khe">Thanh Khê</option>
+                                <option value="lien-chieu">Liên Chiểu</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-end">
+                        <div class="w-full">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Tìm kiếm</label>
+                            <div class="relative">
+                                <input type="text" id="search-input" placeholder="Tìm theo tên, địa chỉ..." class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gold">
+                                <i class="fas fa-search absolute right-3 top-3 text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <p class="text-sm text-gray-600 mb-2">Tiện ích:</p>
+                    <div class="flex flex-wrap gap-2">
+                        <button class="amenity-filter px-3 py-1 border border-gray-300 rounded-full text-sm hover:bg-gold hover:text-white hover:border-gold transition duration-300" data-amenity="pool">Hồ bơi</button>
+                        <button class="amenity-filter px-3 py-1 border border-gray-300 rounded-full text-sm hover:bg-gold hover:text-white hover:border-gold transition duration-300" data-amenity="gym">Phòng gym</button>
+                        <button class="amenity-filter px-3 py-1 border border-gray-300 rounded-full text-sm hover:bg-gold hover:text-white hover:border-gold transition duration-300" data-amenity="parking">Bãi đỗ xe</button>
+                        <button class="amenity-filter px-3 py-1 border border-gray-300 rounded-full text-sm hover:bg-gold hover:text-white hover:border-gold transition duration-300" data-amenity="security">An ninh 24/7</button>
+                        <button class="amenity-filter px-3 py-1 border border-gray-300 rounded-full text-sm hover:bg-gold hover:text-white hover:border-gold transition duration-300" data-amenity="elevator">Thang máy</button>
+                        <button class="amenity-filter px-3 py-1 border border-gray-300 rounded-full text-sm hover:bg-gold hover:text-white hover:border-gold transition duration-300" data-amenity="balcony">Ban công</button>
+                        <button class="amenity-filter px-3 py-1 border border-gray-300 rounded-full text-sm hover:bg-gold hover:text-white hover:border-gold transition duration-300" data-amenity="wifi">Wifi</button>
+                        <button class="amenity-filter px-3 py-1 border border-gray-300 rounded-full text-sm hover:bg-gold hover:text-white hover:border-gold transition duration-300" data-amenity="ac">Điều hòa</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-4 flex justify-between items-center">
+                <p id="results-count" class="text-gray-600">Hiển thị <span class="font-medium">50</span> căn hộ</p>
+                <div class="flex items-center">
+                    <label class="mr-2 text-gray-600">Sắp xếp theo:</label>
+                    <select id="sort-options" class="px-3 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gold">
+                        <option value="recommended">Đề xuất</option>
+                        <option value="price-asc">Giá: Thấp đến cao</option>
+                        <option value="price-desc">Giá: Cao đến thấp</option>
+                        <option value="newest">Mới nhất</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Apartments Grid -->
+            <div id="apartments-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Apartments will be dynamically inserted here -->
+            </div>
+            
+            <!-- Pagination -->
+            <div class="mt-12 flex justify-center">
+                <nav class="inline-flex rounded-md shadow-sm">
+                    <button class="px-3 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="px-4 py-2 border-t border-b border-gray-300 bg-white text-sm font-medium text-gold hover:bg-gray-50">
+                        1
+                    </button>
+                    <button class="px-4 py-2 border-t border-b border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
+                        2
+                    </button>
+                    <button class="px-4 py-2 border-t border-b border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
+                        3
+                    </button>
+                    <button class="px-4 py-2 border-t border-b border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
+                        4
+                    </button>
+                    <button class="px-4 py-2 border-t border-b border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
+                        5
+                    </button>
+                    <button class="px-3 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Areas -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-serif font-bold text-center mb-4">Khu Vực Nổi Bật</h2>
+            <p class="text-gray-600 text-center mb-12 max-w-3xl mx-auto">Khám phá những khu vực được yêu thích nhất tại Đà Nẵng với nhiều lựa chọn căn hộ cao cấp</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                    <div class="h-48 bg-gold flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Sơn Trà</h3>
+                        <p class="text-gray-600 mb-4">Khu vực biển đẹp với nhiều resort và căn hộ cao cấp hướng biển</p>
+                        <p class="text-gold font-medium">15 căn hộ có sẵn</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                    <div class="h-48 bg-darkgold flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Hải Châu</h3>
+                        <p class="text-gray-600 mb-4">Trung tâm thành phố với nhiều tiện ích và căn hộ hiện đại</p>
+                        <p class="text-gold font-medium">12 căn hộ có sẵn</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                    <div class="h-48 bg-gold flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Ngũ Hành Sơn</h3>
+                        <p class="text-gray-600 mb-4">Khu vực yên tĩnh gần các bãi biển nổi tiếng và khu du lịch</p>
+                        <p class="text-gold font-medium">18 căn hộ có sẵn</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+                    <div class="h-48 bg-darkgold flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Thanh Khê</h3>
+                        <p class="text-gray-600 mb-4">Khu vực phát triển với nhiều căn hộ mới và giá cả hợp lý</p>
+                        <p class="text-gold font-medium">5 căn hộ có sẵn</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-serif font-bold text-center mb-4">Tại Sao Chọn Chúng Tôi</h2>
+            <p class="text-gray-600 text-center mb-12 max-w-3xl mx-auto">Chúng tôi cam kết mang đến trải nghiệm thuê căn hộ tốt nhất với dịch vụ chuyên nghiệp</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-6">
+                    <div class="bg-gold/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-check-circle text-3xl text-gold"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Căn Hộ Đã Kiểm Duyệt</h3>
+                    <p class="text-gray-600">Tất cả căn hộ đều được kiểm tra kỹ lưỡng về chất lượng và tiện nghi trước khi đưa lên nền tảng.</p>
+                </div>
+                
+                <div class="text-center p-6">
+                    <div class="bg-gold/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-headset text-3xl text-gold"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Hỗ Trợ 24/7</h3>
+                    <p class="text-gray-600">Đội ngũ hỗ trợ chuyên nghiệp luôn sẵn sàng giải đáp mọi thắc mắc của bạn bất kỳ lúc nào.</p>
+                </div>
+                
+                <div class="text-center p-6">
+                    <div class="bg-gold/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-shield-alt text-3xl text-gold"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Thanh Toán An Toàn</h3>
+                    <p class="text-gray-600">Hệ thống thanh toán bảo mật cao, đảm bảo an toàn cho mọi giao dịch của bạn.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-serif font-bold text-center mb-4">Khách Hàng Nói Gì</h2>
+            <p class="text-gray-600 text-center mb-12 max-w-3xl mx-auto">Những trải nghiệm thực tế từ khách hàng đã sử dụng dịch vụ của chúng tôi</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gold rounded-full flex items-center justify-center text-white font-bold text-xl">
+                            TH
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold">Trần Hương</h4>
+                            <div class="flex text-gold">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"Tôi đã thuê căn hộ ở Sơn Trà qua nền tảng này và rất hài lòng với dịch vụ. Căn hộ đúng như mô tả, sạch sẽ và view biển tuyệt đẹp. Chắc chắn sẽ quay lại!"</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-darkgold rounded-full flex items-center justify-center text-white font-bold text-xl">
+                            NM
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold">Nguyễn Minh</h4>
+                            <div class="flex text-gold">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"Quy trình đặt phòng rất đơn giản và chuyên nghiệp. Chủ nhà rất thân thiện và nhiệt tình. Căn hộ ở Hải Châu rất thuận tiện cho việc di chuyển và mua sắm."</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gold rounded-full flex items-center justify-center text-white font-bold text-xl">
+                            LP
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold">Lê Phương</h4>
+                            <div class="flex text-gold">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"Đây là lần thứ 3 tôi sử dụng dịch vụ và vẫn luôn hài lòng. Đội ngũ hỗ trợ rất nhanh chóng và giải quyết mọi vấn đề một cách hiệu quả. Giá cả hợp lý cho chất lượng tuyệt vời."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-16 bg-charcoal text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-serif font-bold mb-4">Đăng Ký Nhận Thông Tin</h2>
+            <p class="mb-8 max-w-2xl mx-auto">Nhận thông báo về các căn hộ mới và ưu đãi đặc biệt từ chúng tôi</p>
+            
+            <div class="max-w-md mx-auto flex">
+                <input type="email" placeholder="Email của bạn" class="flex-1 px-4 py-3 rounded-l-md focus:outline-none">
+                <button class="bg-gold hover:bg-darkgold px-6 py-3 rounded-r-md transition duration-300 font-medium">
+                    Đăng ký
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-serif font-bold mb-4">
+                        <span class="text-gold">DH</span>HOUSE 
+                    </h3>
+                    <p class="text-gray-400 mb-4">Nền tảng cho thuê căn hộ cao cấp hàng đầu tại Đà Nẵng, mang đến trải nghiệm sống đẳng cấp và tiện nghi.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-gold transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gold transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gold transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gold transition duration-300">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-medium mb-4">Liên kết nhanh</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-gold transition duration-300">Trang chủ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-gold transition duration-300">Căn hộ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-gold transition duration-300">Dịch vụ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-gold transition duration-300">Về chúng tôi</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-gold transition duration-300">Liên hệ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-medium mb-4">Khu vực</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-gold transition duration-300">Sơn Trà</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-gold transition duration-300">Hải Châu</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-gold transition duration-300">Ngũ Hành Sơn</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-gold transition duration-300">Thanh Khê</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-gold transition duration-300">Liên Chiểu</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-medium mb-4">Liên hệ</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-gold"></i>
+                            <span class="text-gray-400">123 Nguyễn Văn Linh, Hải Châu, Đà Nẵng</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3 text-gold"></i>
+                            <span class="text-gray-400">+84 123 456 789</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-gold"></i>
+                            <span class="text-gray-400">dhhousedn@gmail.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 DHHOUSE. Tất cả quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Apartment Detail Modal -->
+    <div id="apartment-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar">
+            <div class="relative">
+                <button id="close-modal" class="absolute top-4 right-4 bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-md z-10">
+                    <i class="fas fa-times text-gray-800"></i>
+                </button>
+                
+                <div id="modal-content">
+                    <!-- Content will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample apartment data
+        const apartments = [
+            {
+                id: 1,
+                name: "Căn hộ Panorama Sơn Trà",
+                address: "15 Hoàng Sa, Sơn Trà, Đà Nẵng",
+                price: 15000000,
+                area: 85,
+                bedrooms: 2,
+                bathrooms: 2,
+                district: "son-tra",
+                amenities: ["pool", "gym", "security", "elevator", "balcony", "wifi", "ac"],
+                description: "Căn hộ cao cấp với tầm nhìn panorama ra biển Đà Nẵng và bán đảo Sơn Trà. Nội thất sang trọng, đầy đủ tiện nghi hiện đại.",
+                images: [
+                    { color: "#3B82F6" }, // Blue
+                    { color: "#10B981" }, // Green
+                    { color: "#F59E0B" }  // Amber
+                ]
+            },
+            {
+                id: 2,
+                name: "The Monarchy Đà Nẵng",
+                address: "Đường Trần Hưng Đạo, Sơn Trà, Đà Nẵng",
+                price: 18000000,
+                area: 95,
+                bedrooms: 3,
+                bathrooms: 2,
+                district: "son-tra",
+                amenities: ["pool", "gym", "parking", "security", "elevator", "balcony", "wifi", "ac"],
+                description: "Căn hộ cao cấp tại The Monarchy với tầm nhìn ra sông Hàn và cầu Rồng. Thiết kế hiện đại, sang trọng với đầy đủ tiện nghi.",
+                images: [
+                    { color: "#EF4444" }, // Red
+                    { color: "#8B5CF6" }, // Purple
+                    { color: "#EC4899" }  // Pink
+                ]
+            },
+            {
+                id: 3,
+                name: "Mường Thanh Luxury",
+                address: "270 Võ Nguyên Giáp, Ngũ Hành Sơn, Đà Nẵng",
+                price: 12000000,
+                area: 70,
+                bedrooms: 2,
+                bathrooms: 1,
+                district: "ngu-hanh-son",
+                amenities: ["pool", "gym", "parking", "security", "elevator", "wifi", "ac"],
+                description: "Căn hộ tại Mường Thanh Luxury với tầm nhìn trực diện biển Mỹ Khê. Nội thất đầy đủ, tiện nghi cao cấp.",
+                images: [
+                    { color: "#F59E0B" }, // Amber
+                    { color: "#3B82F6" }, // Blue
+                    { color: "#10B981" }  // Green
+                ]
+            },
+            {
+                id: 4,
+                name: "Azura Apartment",
+                address: "Đường Trần Hưng Đạo, Sơn Trà, Đà Nẵng",
+                price: 20000000,
+                area: 110,
+                bedrooms: 3,
+                bathrooms: 2,
+                district: "son-tra",
+                amenities: ["pool", "gym", "parking", "security", "elevator", "balcony", "wifi", "ac"],
+                description: "Căn hộ cao cấp Azura với tầm nhìn panorama ra sông Hàn và thành phố. Thiết kế sang trọng, hiện đại với đầy đủ tiện nghi.",
+                images: [
+                    { color: "#8B5CF6" }, // Purple
+                    { color: "#EC4899" }, // Pink
+                    { color: "#EF4444" }  // Red
+                ]
+            },
+            {
+                id: 5,
+                name: "F-Home Apartment",
+                address: "Đường Phan Chu Trinh, Hải Châu, Đà Nẵng",
+                price: 9000000,
+                area: 65,
+                bedrooms: 2,
+                bathrooms: 1,
+                district: "hai-chau",
+                amenities: ["security", "elevator", "wifi", "ac"],
+                description: "Căn hộ F-Home nằm ở trung tâm thành phố, gần chợ Hàn và sông Hàn. Nội thất đầy đủ, phù hợp cho gia đình nhỏ hoặc cặp đôi.",
+                images: [
+                    { color: "#10B981" }, // Green
+                    { color: "#F59E0B" }, // Amber
+                    { color: "#3B82F6" }  // Blue
+                ]
+            },
+            {
+                id: 6,
+                name: "Vincom Plaza Apartment",
+                address: "Đường Ngô Quyền, Sơn Trà, Đà Nẵng",
+                price: 14000000,
+                area: 80,
+                bedrooms: 2,
+                bathrooms: 2,
+                district: "son-tra",
+                amenities: ["pool", "gym", "parking", "security", "elevator", "wifi", "ac"],
+                description: "Căn hộ cao cấp nằm trong khu phức hợp Vincom Plaza, tiện lợi mua sắm và giải trí. Nội thất hiện đại, đầy đủ tiện nghi.",
+                images: [
+                    { color: "#EC4899" }, // Pink
+                    { color: "#EF4444" }, // Red
+                    { color: "#8B5CF6" }  // Purple
+                ]
+            },
+            {
+                id: 7,
+                name: "Hiyori Garden Tower",
+                address: "Võ Văn Kiệt, Sơn Trà, Đà Nẵng",
+                price: 17000000,
+                area: 90,
+                bedrooms: 2,
+                bathrooms: 2,
+                district: "son-tra",
+                amenities: ["pool", "gym", "parking", "security", "elevator", "balcony", "wifi", "ac"],
+                description: "Căn hộ cao cấp tại Hiyori Garden Tower với thiết kế Nhật Bản tinh tế. Tầm nhìn đẹp ra thành phố và sông Hàn.",
+                images: [
+                    { color: "#3B82F6" }, // Blue
+                    { color: "#10B981" }, // Green
+                    { color: "#F59E0B" }  // Amber
+                ]
+            },
+            {
+                id: 8,
+                name: "Risemount Apartment",
+                address: "Đường Bạch Đằng, Hải Châu, Đà Nẵng",
+                price: 22000000,
+                area: 120,
+                bedrooms: 3,
+                bathrooms: 2,
+                district: "hai-chau",
+                amenities: ["pool", "gym", "parking", "security", "elevator", "balcony", "wifi", "ac"],
+                description: "Căn hộ sang trọng tại Risemount với tầm nhìn trực diện sông Hàn và cầu Rồng. Nội thất cao cấp, tiện nghi 5 sao.",
+                images: [
+                    { color: "#EF4444" }, // Red
+                    { color: "#8B5CF6" }, // Purple
+                    { color: "#EC4899" }  // Pink
+                ]
+            },
+            {
+                id: 9,
+                name: "Dragon Bridge View",
+                address: "Đường Trần Hưng Đạo, Sơn Trà, Đà Nẵng",
+                price: 13000000,
+                area: 75,
+                bedrooms: 2,
+                bathrooms: 1,
+                district: "son-tra",
+                amenities: ["security", "elevator", "balcony", "wifi", "ac"],
+                description: "Căn hộ với tầm nhìn trực diện cầu Rồng và sông Hàn. Nội thất đầy đủ, vị trí thuận lợi di chuyển đến các điểm du lịch.",
+                images: [
+                    { color: "#F59E0B" }, // Amber
+                    { color: "#3B82F6" }, // Blue
+                    { color: "#10B981" }  // Green
+                ]
+            },
+            {
+                id: 10,
+                name: "Ocean View Apartment",
+                address: "Đường Võ Nguyên Giáp, Ngũ Hành Sơn, Đà Nẵng",
+                price: 16000000,
+                area: 85,
+                bedrooms: 2,
+                bathrooms: 2,
+                district: "ngu-hanh-son",
+                amenities: ["pool", "gym", "parking", "security", "elevator", "balcony", "wifi", "ac"],
+                description: "Căn hộ hướng biển tại bãi biển Mỹ Khê. Thiết kế hiện đại, nội thất cao cấp với đầy đủ tiện nghi.",
+                images: [
+                    { color: "#8B5CF6" }, // Purple
+                    { color: "#EC4899" }, // Pink
+                    { color: "#EF4444" }  // Red
+                ]
+            },
+            {
+                id: 11,
+                name: "Central Apartment",
+                address: "Đường Lê Duẩn, Hải Châu, Đà Nẵng",
+                price: 8000000,
+                area: 60,
+                bedrooms: 1,
+                bathrooms: 1,
+                district: "hai-chau",
+                amenities: ["security", "elevator", "wifi", "ac"],
+                description: "Căn hộ nhỏ gọn nằm ở trung tâm thành phố, thuận tiện di chuyển. Nội thất đầy đủ, phù hợp cho người độc thân hoặc cặp đôi.",
+                images: [
+                    { color: "#10B981" }, // Green
+                    { color: "#F59E0B" }, // Amber
+                    { color: "#3B82F6" }  // Blue
+                ]
+            },
+            {
+                id: 12,
+                name: "Luxury Han River View",
+                address: "Đường Bạch Đằng, Hải Châu, Đà Nẵng",
+                price: 19000000,
+                area: 100,
+                bedrooms: 3,
+                bathrooms: 2,
+                district: "hai-chau",
+                amenities: ["pool", "gym", "parking", "security", "elevator", "balcony", "wifi", "ac"],
+                description: "Căn hộ cao cấp với tầm nhìn trực diện sông Hàn. Thiết kế sang trọng, nội thất cao cấp với đầy đủ tiện nghi.",
+                images: [
+                    { color: "#EC4899" }, // Pink
+                    { color: "#EF4444" }, // Red
+                    { color: "#8B5CF6" }  // Purple
+                ]
+            },
+            {
+                id: 13,
+                name: "Thanh Khê Residence",
+                address: "Đường Hà Khê, Thanh Khê, Đà Nẵng",
+                price: 7000000,
+                area: 55,
+                bedrooms: 1,
+                bathrooms: 1,
+                district: "thanh-khe",
+                amenities: ["security", "elevator", "wifi", "ac"],
+                description: "Căn hộ mới xây tại quận Thanh Khê, nội thất cơ bản, giá cả phải chăng, phù hợp cho sinh viên hoặc người đi làm.",
+                images: [
+                    { color: "#3B82F6" }, // Blue
+                    { color: "#10B981" }, // Green
+                    { color: "#F59E0B" }  // Amber
+                ]
+            },
+            {
+                id: 14,
+                name: "Liên Chiểu Modern Home",
+                address: "Đường Nguyễn Lương Bằng, Liên Chiểu, Đà Nẵng",
+                price: 6500000,
+                area: 50,
+                bedrooms: 1,
+                bathrooms: 1,
+                district: "lien-chieu",
+                amenities: ["security", "wifi", "ac"],
+                description: "Căn hộ hiện đại tại quận Liên Chiểu, gần Đại học Đà Nẵng. Nội thất đầy đủ, phù hợp cho sinh viên hoặc người đi làm.",
+                images: [
+                    { color: "#EF4444" }, // Red
+                    { color: "#8B5CF6" }, // Purple
+                    { color: "#EC4899" }  // Pink
+                ]
+            },
+            {
+                id: 15,
+                name: "Harmony Tower",
+                address: "Đường 2/9, Hải Châu, Đà Nẵng",
+                price: 12500000,
+                area: 75,
+                bedrooms: 2,
+                bathrooms: 1,
+                district: "hai-chau",
+                amenities: ["pool", "gym", "parking", "security", "elevator", "wifi", "ac"],
+                description: "Căn hộ hiện đại tại trung tâm thành phố, gần các trung tâm thương mại. Nội thất đầy đủ, tiện nghi cao cấp.",
+                images: [
+                    { color: "#F59E0B" }, // Amber
+                    { color: "#3B82F6" }, // Blue
+                    { color: "#10B981" }  // Green
+                ]
+            }
+        ];
+
+        // Generate more apartments to reach 50
+        const allApartments = [...apartments];
+        const districts = ["son-tra", "hai-chau", "ngu-hanh-son", "thanh-khe", "lien-chieu"];
+        const amenitiesList = ["pool", "gym", "parking", "security", "elevator", "balcony", "wifi", "ac"];
+        
+        for (let i = 16; i <= 50; i++) {
+            const baseApartment = apartments[Math.floor(Math.random() * apartments.length)];
+            const randomDistrict = districts[Math.floor(Math.random() * districts.length)];
+            const randomBedrooms = Math.floor(Math.random() * 3) + 1;
+            const randomBathrooms = Math.min(randomBedrooms, Math.floor(Math.random() * 2) + 1);
+            const randomArea = 45 + Math.floor(Math.random() * 80);
+            const randomPrice = 6000000 + Math.floor(Math.random() * 16000000);
+            
+            // Select random amenities
+            const randomAmenities = [];
+            const amenitiesCount = Math.floor(Math.random() * amenitiesList.length) + 3;
+            for (let j = 0; j < amenitiesCount; j++) {
+                const amenity = amenitiesList[Math.floor(Math.random() * amenitiesList.length)];
+                if (!randomAmenities.includes(amenity)) {
+                    randomAmenities.push(amenity);
+                }
+            }
+            
+            allApartments.push({
+                id: i,
+                name: `${baseApartment.name} ${i}`,
+                address: `${Math.floor(Math.random() * 100) + 1} ${baseApartment.address.split(',')[0]}, ${randomDistrict === 'son-tra' ? 'Sơn Trà' : randomDistrict === 'hai-chau' ? 'Hải Châu' : randomDistrict === 'ngu-hanh-son' ? 'Ngũ Hành Sơn' : randomDistrict === 'thanh-khe' ? 'Thanh Khê' : 'Liên Chiểu'}, Đà Nẵng`,
+                price: randomPrice,
+                area: randomArea,
+                bedrooms: randomBedrooms,
+                bathrooms: randomBathrooms,
+                district: randomDistrict,
+                amenities: randomAmenities,
+                description: baseApartment.description,
+                images: baseApartment.images
+            });
+        }
+
+        // Format price to VND
+        function formatPrice(price) {
+            return new Intl.NumberFormat('vi-VN').format(price) + ' đ/tháng';
+        }
+
+        // Format price range for filter
+        function getPriceRange(price) {
+            if (price < 5000000) return '0-5';
+            if (price < 10000000) return '5-10';
+            if (price < 15000000) return '10-15';
+            if (price < 20000000) return '15-20';
+            return '20+';
+        }
+
+        // Get amenity icon
+        function getAmenityIcon(amenity) {
+            switch(amenity) {
+                case 'pool': return '<i class="fas fa-swimming-pool"></i> Hồ bơi';
+                case 'gym': return '<i class="fas fa-dumbbell"></i> Phòng gym';
+                case 'parking': return '<i class="fas fa-parking"></i> Bãi đỗ xe';
+                case 'security': return '<i class="fas fa-shield-alt"></i> An ninh 24/7';
+                case 'elevator': return '<i class="fas fa-arrow-alt-circle-up"></i> Thang máy';
+                case 'balcony': return '<i class="fas fa-door-open"></i> Ban công';
+                case 'wifi': return '<i class="fas fa-wifi"></i> Wifi';
+                case 'ac': return '<i class="fas fa-snowflake"></i> Điều hòa';
+                default: return '';
+            }
+        }
+
+        // Render apartments
+        function renderApartments(apartmentsToRender) {
+            const grid = document.getElementById('apartments-grid');
+            grid.innerHTML = '';
+            
+            if (apartmentsToRender.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-3 text-center py-12">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-gray-400 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <h3 class="text-xl font-bold text-gray-700 mb-2">Không tìm thấy căn hộ nào</h3>
+                        <p class="text-gray-500">Vui lòng thử lại với các bộ lọc khác</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            apartmentsToRender.forEach(apartment => {
+                const card = document.createElement('div');
+                card.className = 'apartment-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300';
+                
+                // Create image slider
+                let imagesHTML = `
+                    <div class="relative h-56 overflow-hidden">
+                        <div class="absolute inset-0 flex">
+                `;
+                
+                apartment.images.forEach((image, index) => {
+                    imagesHTML += `
+                        <div class="w-full h-full flex-shrink-0" style="background-color: ${image.color};">
+                            <div class="w-full h-full flex items-center justify-center text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 22V12h6v10" />
+                                </svg>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                imagesHTML += `
+                        </div>
+                        <div class="absolute top-4 right-4 bg-white rounded-full px-3 py-1 text-sm font-medium text-gray-700 shadow-md">
+                            ${apartment.bedrooms} <i class="fas fa-bed text-gold ml-1 mr-2"></i> ${apartment.bathrooms} <i class="fas fa-bath text-gold ml-1"></i>
+                        </div>
+                        <div class="absolute bottom-4 left-4 price-tag text-white px-3 py-1 rounded-md font-medium shadow-md">
+                            ${formatPrice(apartment.price)}
+                        </div>
+                    </div>
+                `;
+                
+                // Create apartment info
+                const infoHTML = `
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">${apartment.name}</h3>
+                        <p class="text-gray-600 mb-4 flex items-start">
+                            <i class="fas fa-map-marker-alt text-gold mt-1 mr-2"></i>
+                            ${apartment.address}
+                        </p>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-gray-700"><i class="fas fa-ruler-combined text-gold mr-2"></i>${apartment.area} m²</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            ${apartment.amenities.slice(0, 3).map(amenity => 
+                                `<span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-md">${getAmenityIcon(amenity)}</span>`
+                            ).join('')}
+                            ${apartment.amenities.length > 3 ? `<span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-md">+${apartment.amenities.length - 3}</span>` : ''}
+                        </div>
+                        <button class="view-details w-full bg-gold hover:bg-darkgold text-white py-2 rounded-md transition duration-300 font-medium" data-id="${apartment.id}">
+                            Xem chi tiết
+                        </button>
+                    </div>
+                `;
+                
+                card.innerHTML = imagesHTML + infoHTML;
+                grid.appendChild(card);
+            });
+            
+            // Add event listeners to view details buttons
+            document.querySelectorAll('.view-details').forEach(button => {
+                button.addEventListener('click', function() {
+                    const apartmentId = parseInt(this.getAttribute('data-id'));
+                    showApartmentDetails(apartmentId);
+                });
+            });
+            
+            // Update results count
+            document.getElementById('results-count').innerHTML = `Hiển thị <span class="font-medium">${apartmentsToRender.length}</span> căn hộ`;
+        }
+
+        // Show apartment details in modal
+        function showApartmentDetails(apartmentId) {
+            const apartment = allApartments.find(apt => apt.id === apartmentId);
+            if (!apartment) return;
+            
+            const modalContent = document.getElementById('modal-content');
+            
+            // Create image slider
+            let imagesHTML = `
+                <div class="relative h-72 overflow-hidden">
+                    <div class="absolute inset-0 flex">
+            `;
+            
+            apartment.images.forEach((image, index) => {
+                imagesHTML += `
+                    <div class="w-full h-full flex-shrink-0" style="background-color: ${image.color};">
+                        <div class="w-full h-full flex items-center justify-center text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 22V12h6v10" />
+                            </svg>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            imagesHTML += `
+                    </div>
+                    <div class="absolute bottom-4 left-4 price-tag text-white px-4 py-2 rounded-md font-medium shadow-md text-lg">
+                        ${formatPrice(apartment.price)}
+                    </div>
+                </div>
+            `;
+            
+            // Create apartment details
+            const detailsHTML = `
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold mb-2 text-gray-800">${apartment.name}</h2>
+                    <p class="text-gray-600 mb-6 flex items-start">
+                        <i class="fas fa-map-marker-alt text-gold mt-1 mr-2"></i>
+                        ${apartment.address}
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        <div class="bg-gray-50 p-4 rounded-lg text-center">
+                            <p class="text-gray-500 text-sm">Diện tích</p>
+                            <p class="text-xl font-bold text-gray-800">${apartment.area} m²</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg text-center">
+                            <p class="text-gray-500 text-sm">Phòng ngủ</p>
+                            <p class="text-xl font-bold text-gray-800">${apartment.bedrooms}</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg text-center">
+                            <p class="text-gray-500 text-sm">Phòng tắm</p>
+                            <p class="text-xl font-bold text-gray-800">${apartment.bathrooms}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h3 class="text-lg font-bold mb-3 text-gray-800">Mô tả</h3>
+                        <p class="text-gray-600">${apartment.description}</p>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h3 class="text-lg font-bold mb-3 text-gray-800">Tiện ích</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                            ${apartment.amenities.map(amenity => 
+                                `<div class="bg-gray-50 p-3 rounded-lg flex items-center">
+                                    <span class="text-gold mr-2">${getAmenityIcon(amenity).split(' ')[0]}</span>
+                                    <span class="text-gray-700">${getAmenityIcon(amenity).split(' ').slice(1).join(' ')}</span>
+                                </div>`
+                            ).join('')}
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <button class="flex-1 bg-gold hover:bg-darkgold text-white py-3 rounded-md transition duration-300 font-medium">
+                            <i class="fas fa-phone-alt mr-2"></i> Liên hệ ngay
+                        </button>
+                        <button class="flex-1 border border-gold text-gold hover:bg-gold hover:text-white py-3 rounded-md transition duration-300 font-medium">
+                            <i class="far fa-calendar-alt mr-2"></i> Đặt lịch xem
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            modalContent.innerHTML = imagesHTML + detailsHTML;
+            document.getElementById('apartment-modal').classList.remove('hidden');
+        }
+
+        // Close modal
+        document.getElementById('close-modal').addEventListener('click', function() {
+            document.getElementById('apartment-modal').classList.add('hidden');
+        });
+
+        // Filter apartments
+        function filterApartments() {
+            const priceFilter = document.getElementById('price-filter').value;
+            const bedroomFilter = document.getElementById('bedroom-filter').value;
+            const areaFilter = document.getElementById('area-filter').value;
+            const searchInput = document.getElementById('search-input').value.toLowerCase();
+            
+            // Get selected amenities
+            const selectedAmenities = Array.from(document.querySelectorAll('.amenity-filter.filter-active'))
+                .map(el => el.getAttribute('data-amenity'));
+            
+            // Filter apartments
+            let filteredApartments = allApartments.filter(apartment => {
+                // Price filter
+                if (priceFilter !== 'all') {
+                    const [min, max] = priceFilter.split('-');
+                    if (max === '+') {
+                        if (apartment.price < parseInt(min) * 1000000) return false;
+                    } else {
+                        if (apartment.price < parseInt(min) * 1000000 || apartment.price > parseInt(max) * 1000000) return false;
+                    }
+                }
+                
+                // Bedroom filter
+                if (bedroomFilter !== 'all') {
+                    if (bedroomFilter === '4+') {
+                        if (apartment.bedrooms < 4) return false;
+                    } else {
+                        if (apartment.bedrooms !== parseInt(bedroomFilter)) return false;
+                    }
+                }
+                
+                // Area filter
+                if (areaFilter !== 'all' && apartment.district !== areaFilter) return false;
+                
+                // Search filter
+                if (searchInput && !apartment.name.toLowerCase().includes(searchInput) && 
+                    !apartment.address.toLowerCase().includes(searchInput)) return false;
+                
+                // Amenities filter
+                if (selectedAmenities.length > 0) {
+                    for (const amenity of selectedAmenities) {
+                        if (!apartment.amenities.includes(amenity)) return false;
+                    }
+                }
+                
+                return true;
+            });
+            
+            // Sort apartments
+            const sortOption = document.getElementById('sort-options').value;
+            switch(sortOption) {
+                case 'price-asc':
+                    filteredApartments.sort((a, b) => a.price - b.price);
+                    break;
+                case 'price-desc':
+                    filteredApartments.sort((a, b) => b.price - a.price);
+                    break;
+                case 'newest':
+                    filteredApartments.sort((a, b) => b.id - a.id);
+                    break;
+                default:
+                    // Default sorting (recommended)
+                    break;
+            }
+            
+            renderApartments(filteredApartments);
+        }
+
+        // Event listeners for filters
+        document.getElementById('price-filter').addEventListener('change', filterApartments);
+        document.getElementById('bedroom-filter').addEventListener('change', filterApartments);
+        document.getElementById('area-filter').addEventListener('change', filterApartments);
+        document.getElementById('search-input').addEventListener('input', filterApartments);
+        document.getElementById('sort-options').addEventListener('change', filterApartments);
+        
+        // Amenity filters
+        document.querySelectorAll('.amenity-filter').forEach(button => {
+            button.addEventListener('click', function() {
+                this.classList.toggle('filter-active');
+                filterApartments();
+            });
+        });
+
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            renderApartments(allApartments);
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9443e78bb20709fc',t:'MTc0Nzk5NjUwNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
